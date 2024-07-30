@@ -1,4 +1,17 @@
 <template>
+  <!-- <div class="searchInput">
+    без использования v-model делаем так
+        <input type="text"
+        :value="this.searchText"
+        @input="this.searchText = $event.target.value" />
+    <input type="text" v-model="searchText" />
+  </div> -->
+  <div class="searchInput">
+    <input-box
+      v-model="this.searchText"
+      placeholder="Input search"
+    ></input-box>
+  </div>
   <div class="cardList">
     <product-card
       v-for="(product, index) in products"
@@ -32,9 +45,10 @@ export default {
   },
   data() {
     return {
+      searchText: "",
       products: [
         {
-          // image: earringsURL,
+          image: earringsURL,
           name: "Earrings",
           price: 1000,
           available: true,
@@ -79,5 +93,10 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
+}
+
+.searchInput {
+  text-align: center;
+  margin: 25px;
 }
 </style>
